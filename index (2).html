@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXA // Srijan Halder - Minimalist Portfolio</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --panel-bg: rgba(20, 20, 20, 0.6);
+            --border-color: rgba(255, 255, 255, 0.15);
+            --text-main: #e0e0e0;
+            --text-dim: #888888;
+            --accent: #ffffff;
+            --font-head: 'Space Mono', monospace;
+            --font-sub: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sub);
+            font-size: 16px;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+        }
+
+        /* Navigation Header */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo span {
+            color: var(--text-dim);
+        }
+
+        .brand-tag {
+            font-size: 0.65rem;
+            background: #fff;
+            color: #000;
+            padding: 2px 6px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-family: var(--font-head);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        /* Minimal Button Styling */
+        .mono-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            font-family: var(--font-head);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #000;
+            background: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: 1px solid #fff;
+            transition: 0.2s ease;
+        }
+
+        .mono-btn:hover {
+            background: transparent;
+            color: #fff;
+        }
+
+        .mono-btn-outline {
+            color: #fff;
+            background: transparent;
+            border: 1px solid var(--border-color);
+        }
+
+        .mono-btn-outline:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mono-btn.sm {
+            padding: 8px 14px;
+            font-size: 0.75rem;
+        }
+
+        /* Container & Grid Sections */
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 20px 80px 20px;
+        }
+
+        .section-title {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        /* Hero Section & Avatar Styles */
+        #home {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero-avatar-container {
+            margin-bottom: 20px;
+        }
+
+        .hero-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+            filter: grayscale(100%);
+            transition: 0.3s ease;
+        }
+
+        .hero-avatar:hover {
+            filter: grayscale(0%);
+            border-color: #fff;
+        }
+
+        .hero-sys-info {
+            font-family: var(--font-head);
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-family: var(--font-head);
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-title span {
+            color: var(--text-dim);
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        /* Audio HUD Component */
+        .audio-hud {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 6px;
+            width: 100%;
+            max-width: 480px;
+            margin-top: 25px;
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        /* Cards Layout */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .mono-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .mono-card:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .mono-card h3 {
+            font-family: var(--font-head);
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .mono-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .tag-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .mono-tag {
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-family: var(--font-head);
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 3px;
+        }
+
+        /* Social Cards */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 18px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .social-card:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .social-card i {
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        /* Mobile View Rules */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .section-title { font-size: 1.3rem; }
+            .hero-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav>
+        <a href="#home" class="brand-logo">
+            <span class="brand-tag">NEXA</span>
+            SRIJAN <span>HALDER</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">01. HOME</a></li>
+            <li><a href="#about">02. ABOUT</a></li>
+            <li><a href="#skills">03. SKILLS</a></li>
+            <li><a href="#gaming">04. GAMING</a></li>
+            <li><a href="#socials">05. CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="section-container">
+        
+        <!-- Hero Section -->
+        <section id="home">
+            <!-- Profile Picture Element -->
+            <div class="hero-avatar-container">
+                <img src="pfp.jpg" alt="Srijan Halder" class="hero-avatar">
+            </div>
+
+            <div class="hero-sys-info">// PORTFOLIO.INIT</div>
+            <h1 class="hero-title">GAMER & <span>CREATIVE DEVELOPER</span></h1>
+            <p class="hero-subtitle">
+                Welcome. Casual developer, gamer, and video/photo editor crafting high-impact visual edits, clean interfaces, and digital experiences.
+            </p>
+
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#skills" class="mono-btn">
+                    <i class="fas fa-arrow-down"></i> EXPLORE PROFILE
+                </a>
+                <a href="#socials" class="mono-btn mono-btn-outline">
+                    <i class="fas fa-paper-plane"></i> GET IN TOUCH
+                </a>
+            </div>
+
+            <!-- Local Audio Player Component -->
+            <div class="audio-hud">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="font-family: var(--font-head); font-size: 0.75rem; color: #fff;">
+                        <i class="fas fa-compact-disc fa-spin"></i> CUSTOM_AUDIO_TRACK
+                    </div>
+                    <span id="audio-status" style="font-size: 0.7rem; color: var(--text-dim);">STANDBY</span>
+                </div>
+
+                <!-- Audio element pointing to song.mp3 -->
+                <audio id="bg-audio" loop preload="auto">
+                    <source src="song.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <div class="audio-controls">
+                    <button id="play-btn" class="mono-btn sm">
+                        <i class="fas fa-play"></i> START AUDIO
+                    </button>
+                    <span style="font-size: 0.75rem; color: var(--text-dim); font-family: var(--font-head);">NON-COPYRIGHTED BG AUDIO</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" style="margin-top: 80px;">
+            <h2 class="section-title">02. OVERVIEW</h2>
+            <div class="mono-card">
+                <h3>Srijan Halder [NEXA]</h3>
+                <p>
+                    Passionate gamer and creative creator. Balancing casual code experiments with high-energy video motion graphics, photo styling, and competitive mobile/PC gaming.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" style="margin-top: 80px;">
+            <h2 class="section-title">03. SKILLS & TOOLKIT</h2>
+            <div class="grid-layout">
+                <div class="mono-card">
+                    <h3><i class="fas fa-film" style="margin-right: 8px;"></i> Video & Photo Editing</h3>
+                    <p>Producing AMVs, montage edits, color grading, and dynamic motion graphics.</p>
+                    <div class="tag-container">
+                        <span class="mono-tag">After Effects</span>
+                        <span class="mono-tag">Alight Motion</span>
+                        <span class="mono-tag">CapCut</span>
+                    </div>
+                </div>
+                <div class="mono-card">
+                    <h3><i class="fas fa-code" style="margin-right: 8px;"></i> Coding & Dev</h3>
+                    <p>Building casual web projects, interactive UI elements, scripts, and software tools.</p>
+                    <div class="tag-container">
+                        <span class="mono-tag">Python</span>
+                        <span class="mono-tag">HTML5 / CSS3</span>
+                        <span class="mono-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gaming Section -->
+        <section id="gaming" style="margin-top: 80px;">
+            <h2 class="section-title">04. GAMING ARENA</h2>
+            <div class="grid-layout">
+                <div class="mono-card">
+                    <h3><i class="fas fa-gamepad" style="margin-right: 8px;"></i> Active Titles</h3>
+                    <p>Dominating competitive matches and building virtual worlds.</p>
+                    <div class="tag-container">
+                        <span class="mono-tag">Roblox</span>
+                        <span class="mono-tag">Blockman Go</span>
+                        <span class="mono-tag">Free Fire</span>
+                        <span class="mono-tag">eFootball Mobile</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media / Contact Section -->
+        <section id="socials" style="margin-top: 80px;">
+            <h2 class="section-title">05. DIRECT CONTACT</h2>
+            <p style="color: var(--text-dim); margin-bottom: 20px; font-size: 0.9rem;">Reach out directly through social channels or send an email transmission.</p>
+            <div class="social-grid">
+                <!-- Discord direct link with ID -->
+                <a href="https://discord.com/users/1457845956505764003" target="_blank" class="social-card">
+                    <i class="fab fa-discord"></i>
+                    <div>
+                        <div style="font-weight: 500; font-family: var(--font-head); font-size: 0.9rem;">DISCORD</div>
+                        <div style="font-size: 0.75rem; color: var(--text-dim);">@nexa.07</div>
+                    </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:haldersrijan90@gmail.com" class="social-card">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <div style="font-weight: 500; font-family: var(--font-head); font-size: 0.9rem;">EMAIL</div>
+                        <div style="font-size: 0.75rem; color: var(--text-dim);">haldersrijan90@...</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Audio Player Play/Pause Script -->
+    <script>
+        const audio = document.getElementById('bg-audio');
+        const playBtn = document.getElementById('play-btn');
+        const statusText = document.getElementById('audio-status');
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i> PAUSE AUDIO';
+                    statusText.innerText = 'PLAYING';
+                    statusText.style.color = '#fff';
+                }).catch(e => {
+                    console.log("Playback error:", e);
+                });
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i> START AUDIO';
+                statusText.innerText = 'PLAYING';
+                statusText.innerText = 'STANDBY';
+                statusText.style.color = 'var(--text-dim)';
+            }
+        });
+    </script>
+</body>
+</html>
